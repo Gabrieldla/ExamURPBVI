@@ -2,18 +2,18 @@
 
 Sistema web moderno para gestionar y acceder a exámenes pasados de la Universidad Ricardo Palma.
 
-## 📋 Características
+## Características
 
-- ✅ **Navegación intuitiva** por carreras y materias
-- ✅ **Filtros avanzados** por carrera, ciclo y materia
-- ✅ **Panel de administración** seguro
-- ✅ **Sistema de autenticación** con Supabase
-- ✅ **Base de datos en tiempo real** con Supabase
-- ✅ **Interfaz responsive** con Tailwind CSS
-- ✅ **Diseño profesional** con colores URP
-- ✅ **CRUD completo** para administradores
+- **Navegación intuitiva** por carreras y materias
+- **Filtros avanzados** por carrera, ciclo y materia
+- **Panel de administración** seguro
+- **Sistema de autenticación** con Supabase
+- **Base de datos en tiempo real** con Supabase
+- **Interfaz responsive** con Tailwind CSS
+- **Diseño profesional** con colores URP
+- **CRUD completo** para administradores
 
-## 🚀 Tecnologías Utilizadas
+## Tecnologías Utilizadas
 
 - **Frontend**: React 18 + Vite
 - **Styling**: Tailwind CSS
@@ -22,7 +22,7 @@ Sistema web moderno para gestionar y acceder a exámenes pasados de la Universid
 - **Icons**: Lucide React
 - **Build Tool**: Vite
 
-## 🛠️ Instalación y Configuración
+## Instalación y Configuración
 
 ### Prerequisitos
 - Node.js 18+ 
@@ -56,7 +56,7 @@ Sistema web moderno para gestionar y acceder a exámenes pasados de la Universid
    npm run build
    ```
 
-## 🎨 Funcionalidades
+## Funcionalidades
 
 ### Para Estudiantes
 - Ver exámenes por carrera
@@ -71,7 +71,7 @@ Sistema web moderno para gestionar y acceder a exámenes pasados de la Universid
 - Eliminar exámenes con confirmación
 - Sesión persistente
 
-## 🏫 Universidad Ricardo Palma
+## Universidad Ricardo Palma
 
 Desarrollado para facilitar el acceso a recursos académicos de la URP.
 

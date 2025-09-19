@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <circle cx="100" cy="100" r="95" fill="none" stroke="#228B22" stroke-width="10"/>
+  <circle cx="100" cy="100" r="85" fill="none" stroke="#228B22" stroke-width="2"/>
+  
+  <!-- Texto circular superior -->
+  <path id="top-circle" d="M 100 100 m -75 0 a 75 75 0 1 1 150 0" fill="none"/>
+  <text font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#228B22">
+    <textPath href="#top-circle" startOffset="0%">UNIVERSIDAD RICARDO PALMA</textPath>
+  </text>
+  
+  <!-- Texto circular inferior -->
+  <path id="bottom-circle" d="M 100 100 m -75 0 a 75 75 0 1 0 150 0" fill="none"/>
+  <text font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#228B22">
+    <textPath href="#bottom-circle" startOffset="50%">LIMA • MCMLXIX • PERÚ</textPath>
+  </text>
+  
+  <!-- Logo central en espiral -->
+  <g transform="translate(100,100)">
+    <path d="M 0 -30 
+             C -10 -30, -20 -25, -25 -15
+             C -30 -5, -30 5, -25 15
+             C -20 25, -10 30, 0 30
+             C 10 30, 20 25, 25 15
+             C 30 5, 30 -5, 25 -15
+             C 20 -25, 10 -30, 0 -30 Z
+             M 0 -15
+             C -5 -15, -10 -12, -12 -7
+             C -15 -2, -15 2, -12 7
+             C -10 12, -5 15, 0 15
+             C 5 15, 10 12, 12 7
+             C 15 2, 15 -2, 12 -7
+             C 10 -12, 5 -15, 0 -15 Z" 
+          fill="#228B22" 
+          fill-rule="evenodd"/>
+    
+    <!-- Elemento central -->
+    <circle cx="0" cy="0" r="3" fill="#228B22"/>
+    
+    <!-- Espirales decorativas -->
+    <path d="M -20 0 Q -10 -10, 0 0 Q 10 10, 20 0" 
+          fill="none" 
+          stroke="white" 
+          stroke-width="2"/>
+    <path d="M 0 -20 Q 10 -10, 0 0 Q -10 10, 0 20" 
+          fill="none" 
+          stroke="white" 
+          stroke-width="2"/>
+  </g>
+</svg>

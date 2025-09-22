@@ -60,7 +60,7 @@ export function LoginPage() {
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-colors"
-                placeholder="admin@examurp.com"
+                placeholder="Correo electrónico"
                 required
               />
             </div>

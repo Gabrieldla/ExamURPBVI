@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { HashRouter, Routes, Route, Link, useParams, useNavigate } from "react-router-dom";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import { AuthProvider } from "./AuthContext";
 import { ExamsProvider, useExams } from "./ExamsContext";
 import { useAuth } from "./AuthContext";
@@ -1107,6 +1108,7 @@ export default function App() {
         <ExamsProvider>
           <EditModalProvider>
             <AppRoutes />
+            <SpeedInsights />
           </EditModalProvider>
         </ExamsProvider>
       </ConfirmDialogProvider>

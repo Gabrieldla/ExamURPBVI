@@ -239,7 +239,7 @@ function FilterBar({ value, onChange }) {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
         <div>
           <label className="block text-sm font-medium text-slate-700 mb-2">Ciclo</label>
           <select

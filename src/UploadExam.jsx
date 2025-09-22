@@ -24,7 +24,7 @@ export function UploadExamPage() {
     { key: "civil", name: "Ingeniería Civil" },
     { key: "mecatronica", name: "Ingeniería Mecatrónica" },
     { key: "industrial", name: "Ingeniería Industrial" },
-    { key: "electricidad", name: "Ingeniería de Electricidad" },
+    { key: "electricidad", name: "Ingeniería Electrónica" },
   ];
 
   const cycles = ["1","2","3","4","5","6","7","8","9","10"];

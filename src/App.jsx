@@ -14,7 +14,7 @@ const CAREERS = [
   { key: "civil", name: "Ingeniería Civil", color: "from-emerald-600 to-teal-500" },
   { key: "mecatronica", name: "Ingeniería Mecatrónica", color: "from-teal-500 to-emerald-600" },
   { key: "industrial", name: "Ingeniería Industrial", color: "from-teal-600 to-emerald-500" },
-  { key: "electricidad", name: "Ingeniería de Electricidad", color: "from-emerald-500 to-teal-500" },
+  { key: "electricidad", name: "Ingeniería Electrónica", color: "from-emerald-500 to-teal-500" },
 ];
 
 
@@ -103,7 +103,7 @@ function Page({ title, children, backTo }) {
       <main className="max-w-7xl mx-auto px-4 py-8">{children}</main>
       <footer className="max-w-7xl mx-auto px-4 py-8 text-center text-sm text-slate-500 border-t border-slate-200 bg-white/50">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p>© {new Date().getFullYear()} ExamURP - Universidad Ricardo Palma</p>
+          <p>© {new Date().getFullYear()} Gabriel De La Rivera - BVI Universidad Ricardo Palma</p>
         </div>
       </footer>
     </div>
@@ -123,7 +123,7 @@ function Card({ children, onClick, className = "" }) {
 
 function StatsCard({ title, value, subtitle }) {
   return (
-    <div className="bg-white rounded-2xl p-8 shadow-sm border border-slate-200 text-center max-w-sm">
+    <div className="bg-white rounded-2xl p-8 shadow-sm border border-slate-200 hover:border-emerald-300 hover:shadow-lg transition-all duration-300 text-center max-w-sm">
       <div className="w-16 h-16 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4">
         <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
@@ -212,7 +212,7 @@ function FilterBar({ value, onChange }) {
   const years = Array.from(new Set(exams.map(e => e.year))).sort((a,b) => b-a);
 
   return (
-    <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm mb-8">
+    <div className="bg-white border border-slate-200 hover:border-emerald-300 hover:shadow-lg transition-all duration-300 rounded-2xl p-6 shadow-sm mb-8">
       <div className="flex items-center gap-2 mb-4">
         <svg className="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
@@ -290,21 +290,6 @@ function FilterBar({ value, onChange }) {
             {years.map(y => <option key={y} value={String(y)}>{y}</option>)}
           </select>
         </div>
-        
-        <div className="flex items-end">
-          <button
-            onClick={() => onChange({ q: "", cycle: "", type: "", period: "", year: "" })}
-            className="w-full px-4 py-2.5 rounded-xl border border-slate-300 hover:bg-slate-100 transition-colors text-sm font-medium"
-          >
-            Limpiar
-          </button>
-        </div>
-        
-        <div className="flex items-end">
-          <button className="w-full px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-medium shadow-lg transition-all duration-200 text-sm">
-            Buscar
-          </button>
-        </div>
       </div>
     </div>
   );
@@ -358,7 +343,7 @@ function ExamCard({ exam }) {
   };
 
   return (
-    <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group">
+    <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-lg hover:border-emerald-300 transition-all duration-300 hover:-translate-y-1 group">
       <div className="flex items-start justify-between gap-4 mb-4">
         <div className="flex-1">
           <h3 className="text-lg font-bold text-slate-800 group-hover:text-emerald-600 transition-colors mb-2">

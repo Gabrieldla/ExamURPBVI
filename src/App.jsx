@@ -8,15 +8,6 @@ import { LoginPage } from "./AdminComponents";
 import { UploadExamPage } from "./UploadExam";
 import { ProtectedRoute } from "./ProtectedRoute";
 
-// Función para convertir números romanos a arábigos
-const romanToArabic = (roman) => {
-  const romanMap = {
-    'I': '1', 'II': '2', 'III': '3', 'IV': '4', 'V': '5',
-    'VI': '6', 'VII': '7', 'VIII': '8', 'IX': '9', 'X': '10'
-  };
-  return romanMap[roman] || roman; // Si no es romano, devuelve el mismo valor
-};
-
 // ---- Mock Data ----
 const CAREERS = [
   { key: "informatica", name: "Ingeniería Informática", color: "from-emerald-500 to-teal-600" },
@@ -402,7 +393,7 @@ function ExamCard({ exam }) {
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4 text-xs">
         <div className="bg-slate-50 rounded-lg p-2 text-center">
           <p className="text-slate-500">Ciclo</p>
-          <p className="font-semibold text-slate-800">{romanToArabic(exam.cycle)}</p>
+          <p className="font-semibold text-slate-800">{exam.cycle}</p>
         </div>
         <div className="bg-slate-50 rounded-lg p-2 text-center">
           <p className="text-slate-500">Tipo</p>
@@ -436,7 +427,7 @@ function ExamsPage() {
         ? (e.title.toLowerCase().includes(filters.q.toLowerCase()) ||
            e.course.toLowerCase().includes(filters.q.toLowerCase()))
         : true;
-      const matchesCycle = filters.cycle ? (e.cycle === filters.cycle || romanToArabic(e.cycle) === filters.cycle) : true;
+      const matchesCycle = filters.cycle ? e.cycle === filters.cycle : true;
       const matchesType = filters.type ? e.type === filters.type : true;
       const matchesPeriod = filters.period ? e.period === filters.period : true;
       const matchesYear = filters.year ? String(e.year) === filters.year : true;
@@ -814,7 +805,7 @@ function EditModal({ exam, onClose }) {
                 onChange={(e) => setEditData({...editData, cycle: e.target.value})}
                 className="w-full px-3 py-2 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500"
               >
-                {["I","II","III","IV","V","VI","VII","VIII","IX","X"].map(c => 
+                {["1","2","3","4","5","6","7","8","9","10"].map(c => 
                   <option key={c} value={c}>{c}</option>
                 )}
               </select>

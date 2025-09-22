@@ -208,7 +208,7 @@ function FilterBar({ value, onChange }) {
   const { exams } = useExams();
   const setField = (k, v) => onChange({ ...value, [k]: v });
 
-  const cycles = ["I","II","III","IV","V","VI","VII","VIII","IX","X"];
+  const cycles = ["1","2","3","4","5","6","7","8","9","10"];
   const years = Array.from(new Set(exams.map(e => e.year))).sort((a,b) => b-a);
 
   return (

@@ -27,8 +27,8 @@ export function UploadExamPage() {
     { key: "electricidad", name: "Ingeniería de Electricidad" },
   ];
 
-  const cycles = ["I","II","III","IV","V","VI","VII","VIII","IX","X"];
-  const examTypes = ["Parcial", "Final", "Sustitutorio", "Práctica"];
+  const cycles = ["1","2","3","4","5","6","7","8","9","10"];
+  const examTypes = ["Parcial", "Final", "Sustitutorio"];
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

@@ -23,6 +23,7 @@ const CAREERS = [
 function Page({ title, children, backTo }) {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
+  const [showContactModal, setShowContactModal] = useState(false);
 
   const handleLogout = async () => {
     try {
@@ -60,6 +61,17 @@ function Page({ title, children, backTo }) {
           </div>
           <div className="ml-auto flex items-center gap-4">
             <span className="text-sm text-slate-500 hidden sm:block">ExamURP</span>
+            
+            <button
+              onClick={() => setShowContactModal(true)}
+              className="flex items-center gap-2 px-3 py-2 rounded-xl bg-emerald-100 hover:bg-emerald-200 text-emerald-600 transition-colors text-sm font-medium"
+              title="Información de contacto"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              <span className="hidden sm:block">Contáctanos</span>
+            </button>
             
             {user && user.id ? (
               <div className="flex items-center gap-3">
@@ -106,6 +118,69 @@ function Page({ title, children, backTo }) {
           <p>© {new Date().getFullYear()} Gabriel De La Rivera - BVI Universidad Ricardo Palma</p>
         </div>
       </footer>
+      
+      {/* Modal de contacto */}
+      {showContactModal && (
+        <div className="fixed inset-0 bg-white/20 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-white/95 backdrop-blur-md rounded-2xl p-8 max-w-md w-full shadow-2xl border border-white/20">
+            <div className="text-center mb-6">
+              <h2 className="text-2xl font-bold text-slate-800 mb-2">¿Quieres colaborar?</h2>
+              <p className="text-slate-600">Ayúdanos a ampliar nuestra base de datos enviando exámenes</p>
+            </div>
+            
+            <div className="space-y-4">
+              <div className="bg-emerald-50/80 backdrop-blur-sm rounded-xl p-4 border border-emerald-200/50">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center">
+                    <svg className="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <h3 className="font-semibold text-slate-800">Correo</h3>
+                </div>
+                <p className="text-emerald-700 font-medium text-sm">bibv.ingenieria@urp.edu.pe</p>
+              </div>
+              
+              <div className="bg-emerald-50/80 backdrop-blur-sm rounded-xl p-4 border border-emerald-200/50">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center">
+                    <svg className="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                  </div>
+                  <h3 className="font-semibold text-slate-800">Celular</h3>
+                </div>
+                <p className="text-emerald-700 font-medium text-sm">968 078 224</p>
+              </div>
+              
+              <div className="bg-emerald-50/80 backdrop-blur-sm rounded-xl p-4 border border-emerald-200/50">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center">
+                    <svg className="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                  </div>
+                  <h3 className="font-semibold text-slate-800">Ubicación</h3>
+                </div>
+                <p className="text-emerald-700 font-medium text-sm">Aula G204<br />Universidad Ricardo Palma</p>
+              </div>
+            </div>
+            
+            <div className="text-center mt-6">
+              <p className="text-sm text-slate-500 mb-4">
+                Envía tus exámenes y ayuda a otros estudiantes a prepararse mejor
+              </p>
+              <button
+                onClick={() => setShowContactModal(false)}
+                className="px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white rounded-xl transition-colors font-medium"
+              >
+                Cerrar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -429,7 +504,7 @@ function ExamsPage() {
   const { careerKey } = useParams();
   const career = CAREERS.find(c => c.key === careerKey);
   const { exams: allExams, loading } = useExams();
-  const [filters, setFilters] = useState({ q: "", cycle: "", type: "", period: "", year: "" });
+  const [filters, setFilters] = useState({ q: "", cycle: "", type: "", period: "", year: "", malla: "" });
   const [sortBy, setSortBy] = useState("newest");
 
   const exams = useMemo(() => allExams.filter(e => e.career === careerKey), [allExams, careerKey]);
@@ -585,6 +660,7 @@ function ExamsPage() {
         )}
         </div>
       )}
+      
     </Page>
   );
 }

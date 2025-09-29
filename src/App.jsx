@@ -239,7 +239,7 @@ function FilterBar({ value, onChange }) {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-5 gap-4">
         <div>
           <label className="block text-sm font-medium text-slate-700 mb-2">Ciclo</label>
           <select
@@ -262,7 +262,7 @@ function FilterBar({ value, onChange }) {
             <option value="">Todos</option>
             <option value="Parcial">Parcial</option>
             <option value="Final">Final</option>
-            <option value="Susti">Sustitutorio</option>
+            <option value="Sustitutorio">Sustitutorio</option>
           </select>
         </div>
         
@@ -288,6 +288,19 @@ function FilterBar({ value, onChange }) {
           >
             <option value="">Todos</option>
             {years.map(y => <option key={y} value={String(y)}>{y}</option>)}
+          </select>
+        </div>
+        
+        <div>
+          <label className="block text-sm font-medium text-slate-700 mb-2">Malla</label>
+          <select
+            value={value.malla}
+            onChange={(e) => setField("malla", e.target.value)}
+            className="w-full px-3 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white transition-colors text-sm"
+          >
+            <option value="">Todas</option>
+            <option value="Malla 52">Malla 52</option>
+            <option value="Malla P24">Malla P24</option>
           </select>
         </div>
       </div>
@@ -343,7 +356,7 @@ function ExamCard({ exam }) {
   };
 
   return (
-    <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-lg hover:border-emerald-300 transition-all duration-300 hover:-translate-y-1 group">
+    <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-lg hover:border-emerald-300 transition-all duration-300 hover:-translate-y-1 group h-full flex flex-col">
       <div className="flex items-start justify-between gap-4 mb-4">
         <div className="flex-1">
           <h3 className="text-lg font-bold text-slate-800 group-hover:text-emerald-600 transition-colors mb-2">
@@ -351,7 +364,7 @@ function ExamCard({ exam }) {
           </h3>
           <p className="text-sm text-slate-600 mb-1">{exam.course}</p>
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-2 flex-shrink-0">
           <button 
             onClick={handleDownload}
             className="px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-medium text-sm shadow-lg transition-all duration-200 transform hover:scale-105"
@@ -390,7 +403,7 @@ function ExamCard({ exam }) {
         </div>
       </div>
       
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4 text-xs">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs mt-auto">
         <div className="bg-slate-50 rounded-lg p-2 text-center">
           <p className="text-slate-500">Ciclo</p>
           <p className="font-semibold text-slate-800">{exam.cycle}</p>
@@ -431,7 +444,8 @@ function ExamsPage() {
       const matchesType = filters.type ? e.type === filters.type : true;
       const matchesPeriod = filters.period ? e.period === filters.period : true;
       const matchesYear = filters.year ? String(e.year) === filters.year : true;
-      return matchesQ && matchesCycle && matchesType && matchesPeriod && matchesYear;
+      const matchesMalla = filters.malla ? e.course === filters.malla : true;
+      return matchesQ && matchesCycle && matchesType && matchesPeriod && matchesYear && matchesMalla;
     });
 
     // Apply sorting
@@ -534,7 +548,7 @@ function ExamsPage() {
           <p className="text-slate-600">Cargando exámenes...</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 items-stretch">
           {filtered.length === 0 ? (
           <div className="col-span-full">
             <div className="text-center py-16 border-2 border-dashed border-slate-300 rounded-2xl bg-slate-50">
@@ -562,7 +576,7 @@ function ExamsPage() {
           filtered.map((exam, index) => (
             <div 
               key={exam.id} 
-              className="animate-fade-in-up"
+              className="animate-fade-in-up h-full"
               style={{ animationDelay: `${index * 50}ms` }}
             >
               <ExamCard exam={exam} />
@@ -778,7 +792,7 @@ function EditModal({ exam, onClose }) {
         
         <div className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Título</label>
+            <label className="block text-sm font-medium text-slate-700 mb-1">Curso</label>
             <input
               type="text"
               value={editData.title}
@@ -788,13 +802,16 @@ function EditModal({ exam, onClose }) {
           </div>
           
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Curso</label>
-            <input
-              type="text"
+            <label className="block text-sm font-medium text-slate-700 mb-1">Malla</label>
+            <select
               value={editData.course}
               onChange={(e) => setEditData({...editData, course: e.target.value})}
               className="w-full px-3 py-2 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500"
-            />
+            >
+              <option value="">Seleccionar malla</option>
+              <option value="Malla 52">Malla 52</option>
+              <option value="Malla P24">Malla P24</option>
+            </select>
           </div>
           
           <div className="grid grid-cols-2 gap-3">

@@ -146,7 +146,7 @@ export function UploadExamPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium text-slate-700 mb-2">
-                    Título del Examen *
+                    Nombre del Curso *
                   </label>
                   <input
                     type="text"
@@ -154,24 +154,26 @@ export function UploadExamPage() {
                     value={formData.title}
                     onChange={handleInputChange}
                     className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-                    placeholder="Ej: Algoritmos - Parcial A"
+                    placeholder="Ej: Algoritmos y Estructuras de Datos"
                     required
                   />
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium text-slate-700 mb-2">
-                    Nombre del Curso *
+                    Malla *
                   </label>
-                  <input
-                    type="text"
+                  <select
                     name="course"
                     value={formData.course}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-                    placeholder="Ej: Algoritmos y Estructuras de Datos"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white"
                     required
-                  />
+                  >
+                    <option value="">Seleccionar malla</option>
+                    <option value="Malla 52">Malla 52</option>
+                    <option value="Malla P24">Malla P24</option>
+                  </select>
                 </div>
 
                 <div>

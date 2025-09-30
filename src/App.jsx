@@ -58,7 +58,7 @@ function Page({ title, children, backTo }) {
             />
             <div className="flex flex-col sm:flex-row sm:items-center gap-2">
               <span className="text-lg sm:text-2xl font-extrabold tracking-wide text-white" style={{ fontFamily: 'League Spartan Extra Bold, League Spartan, Arial, sans-serif' }}>
-                FACULTAD DE INGENIERIA - URP 
+                FACULTAD DE INGENIERIA
               </span>
               <span
                 className="px-3 sm:px-6 py-2 text-white text-xs sm:text-base font-bold shadow-md flex items-center justify-center whitespace-normal break-words text-center"

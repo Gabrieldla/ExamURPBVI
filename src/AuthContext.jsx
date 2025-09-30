@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }) => {
             id: session.user.id,
             email: session.user.email,
             name: session.user.user_metadata?.name || 'Administrador URP',
-            avatar: '👨‍💼'
+            avatar: ''
           });
         } else {
           if (mounted) {
@@ -68,7 +68,7 @@ export const AuthProvider = ({ children }) => {
           id: session.user.id,
           email: session.user.email,
           name: session.user.user_metadata?.name || 'Administrador URP',
-          avatar: '👨‍💼'
+          avatar: ''
         });
       } else {
         setUser(null);

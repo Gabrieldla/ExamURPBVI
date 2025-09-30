@@ -35,13 +35,14 @@ function Page({ title, children, backTo }) {
   };
 
   return (
-    <div className="min-h-screen bg-white">
-      <header className="sticky top-0 z-10 bg-white/95 backdrop-blur-sm border-b border-slate-200 shadow-sm">
+    <div className="min-h-screen">
+  <header className="sticky top-0 z-10 border-b border-slate-200 shadow-sm" style={{ background: 'linear-gradient(90deg, #006F37 0%, #238E6A 100%)' }}>
         <div className="max-w-7xl mx-auto px-4 py-4 flex items-center gap-4">
           {backTo ? (
             <button
               onClick={() => navigate(backTo)}
-              className="flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 hover:bg-slate-100 transition-colors"
+              className="flex items-center gap-2 px-4 py-2 rounded-xl border border-white text-white hover:bg-white/10 transition-colors font-bold shadow"
+              style={{ borderWidth: 2 }}
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -51,20 +52,56 @@ function Page({ title, children, backTo }) {
           ) : null}
           <div className="flex items-center gap-3">
             <img 
-              src="/logo_bvi-2021.png" 
+              src="/logo_urp_blanco.png" 
               alt="Universidad Ricardo Palma" 
-              className="w-10 h-10"
+              className="w-15 h-15"
             />
-            <h1 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
-              {title}
-            </h1>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+              <span className="text-lg sm:text-2xl font-extrabold tracking-wide text-white" style={{ fontFamily: 'League Spartan Extra Bold, League Spartan, Arial, sans-serif' }}>
+                FACULTAD DE INGENIERIA - URP 
+              </span>
+              <span
+                className="px-6 py-2 text-white text-xs sm:text-base font-bold shadow-md flex items-center justify-center"
+                style={{
+                  background: '#B91CB7',
+                  fontFamily: 'League Spartan Extra Bold, League Spartan, Arial, sans-serif',
+                  letterSpacing: '0.05em',
+                  clipPath: 'polygon(7% 0, 100% 0, 93% 100%, 0 100%)',
+                  border: 'none',
+                  minWidth: '220px',
+                  maxWidth: '100%',
+                  height: '40px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '1rem',
+                }}
+              >
+                BIBLIOTECA VIRTUAL DE INGENIERIA
+              </span>
+            </div>
           </div>
           <div className="ml-auto flex items-center gap-4">
-            <span className="text-sm text-slate-500 hidden sm:block">ExamURP</span>
+            {/* <span className="text-sm text-slate-500 hidden sm:block">ExamURP</span> */}
             
+            {/* Botón BVI a la izquierda */}
+            <a
+              href="https://www.urp.edu.pe/pregrado/facultad-de-ingenieria/bvi/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-3 py-2 rounded-xl bg-transparent hover:bg-white/10 text-white transition-colors text-sm font-bold"
+              title="Biblioteca Virtual de Ingeniería URP"
+            >
+              {/* Icono de libro abierto */}
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2 6.5A2.5 2.5 0 014.5 4H12v16H4.5A2.5 2.5 0 012 17.5v-11z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M22 6.5A2.5 2.5 0 0019.5 4H12v16h7.5a2.5 2.5 0 002.5-2.5v-11z" />
+              </svg>
+              <span className="hidden sm:block">BVI</span>
+            </a>
             <button
               onClick={() => setShowContactModal(true)}
-              className="flex items-center gap-2 px-3 py-2 rounded-xl bg-emerald-100 hover:bg-emerald-200 text-emerald-600 transition-colors text-sm font-medium"
+              className="flex items-center gap-2 px-3 py-2 rounded-xl bg-transparent hover:bg-white/10 text-white transition-colors text-sm font-bold"
               title="Información de contacto"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -84,9 +121,6 @@ function Page({ title, children, backTo }) {
                   className="flex items-center gap-2 px-3 py-2 rounded-xl bg-emerald-100 hover:bg-emerald-200 text-emerald-600 transition-colors text-sm font-medium"
                   title="Panel de Administración"
                 >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4" />
-                  </svg>
                   <span className="hidden sm:block">Admin</span>
                 </Link>
                 <button
@@ -101,13 +135,20 @@ function Page({ title, children, backTo }) {
                 </button>
               </div>
             ) : (
-              <Link 
-                to="/admin/login"
-                className="text-sm text-slate-600 hover:text-emerald-600 transition-colors"
-                title="Panel de Administración"
-              >
-                Admin
-              </Link>
+              <>
+                <Link 
+                  to="/admin/login"
+                  className="flex items-center gap-2 px-3 py-2 rounded-xl bg-transparent hover:bg-white/10 text-white transition-colors text-sm font-bold"
+                  title="Panel de Administración"
+                >
+                  {/* Icono de persona */}
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <circle cx="12" cy="8" r="4" stroke="currentColor" strokeWidth="2" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 20v-2a4 4 0 014-4h4a4 4 0 014 4v2" />
+                  </svg>
+                  <span className="hidden sm:block">Admin</span>
+                </Link>
+              </>
             )}
           </div>
         </div>
@@ -242,11 +283,25 @@ function CareersPage() {
             style={{ animationDelay: `${index * 100}ms` }}
           >
             <div className="flex items-start gap-4">
-              <div className={`w-16 h-16 bg-gradient-to-r ${career.color} rounded-2xl flex items-center justify-center shadow-lg`}>
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                </svg>
-              </div>
+              {career.key === "civil" ? (
+                <div className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg bg-white">
+                  <img src="/ingcivil.png" alt="Ingeniería Civil" className="object-contain w-14 h-14" />
+                </div>
+              ) : career.key === "electricidad" ? (
+                <div className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg bg-white">
+                  <img src="/ingelectronica.png" alt="Ingeniería Electrónica" className="object-contain w-14 h-14" />
+                </div>
+              ) : career.key === "industrial" ? (
+                <div className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg bg-white">
+                  <img src="/ingindustrial.png" alt="Ingeniería Industrial" className="object-contain w-14 h-14" />
+                </div>
+              ) : (
+                <div className={`w-16 h-16 bg-gradient-to-r ${career.color} rounded-2xl flex items-center justify-center shadow-lg`}>
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  </svg>
+                </div>
+              )}
               <div className="flex-1">
                 <div className="text-lg font-bold text-slate-800 mb-2">{career.name}</div>
                 <p className="text-sm text-slate-500 mb-3">
@@ -273,11 +328,21 @@ function CareersPage() {
                 style={{ animationDelay: `${(index + 3) * 100}ms` }}
               >
                 <div className="flex items-start gap-4">
-                  <div className={`w-16 h-16 bg-gradient-to-r ${career.color} rounded-2xl flex items-center justify-center shadow-lg`}>
-                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                    </svg>
-                  </div>
+                  {career.key === "informatica" ? (
+                    <div className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg bg-white">
+                      <img src="/inginformatica.png" alt="Ingeniería Informática" className="object-contain w-14 h-14" />
+                    </div>
+                  ) : career.key === "mecatronica" ? (
+                    <div className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg bg-white">
+                      <img src="/ingmecatronica.png" alt="Ingeniería Mecatrónica" className="object-contain w-14 h-14" />
+                    </div>
+                  ) : (
+                    <div className={`w-16 h-16 bg-gradient-to-r ${career.color} rounded-2xl flex items-center justify-center shadow-lg`}>
+                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                      </svg>
+                    </div>
+                  )}
                   <div className="flex-1">
                     <div className="text-lg font-bold text-slate-800 mb-2">{career.name}</div>
                     <p className="text-sm text-slate-500 mb-3">
@@ -580,14 +645,25 @@ function ExamsPage() {
   }
 
   return (
-    <Page title={`${career.name} - Exámenes`} backTo="/">
-      {/* Breadcrumb */}
-      <div className="mb-6 text-sm text-slate-600">
-        <Link to="/" className="text-emerald-600 hover:text-emerald-800 transition-colors">Carreras</Link>
-        <span className="mx-2 text-slate-400">/</span>
-        <span className="text-slate-800 font-medium">{career.name}</span>
+    <Page title={`${career.name} - Exámenes`}>
+      {/* Breadcrumb + Volver */}
+      <div className="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-sm text-slate-600">
+        <div>
+          <Link to="/" className="text-emerald-600 hover:text-emerald-800 transition-colors">Carreras</Link>
+          <span className="mx-2 text-slate-400">/</span>
+          <span className="text-slate-800 font-medium">{career.name}</span>
+        </div>
+        <button
+          onClick={() => window.history.back()}
+          className="flex items-center gap-2 px-4 py-2 rounded-xl border border-emerald-600 text-emerald-700 bg-white hover:bg-emerald-50 transition-colors font-bold shadow"
+          style={{ borderWidth: 2 }}
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+          Volver
+        </button>
       </div>
-
 
       {/* Filters */}
       <FilterBar value={filters} onChange={setFilters} />

@@ -158,7 +158,7 @@ function Page({ title, children, backTo }) {
         </div>
       </header>
       <main className="max-w-7xl mx-auto px-4 py-8">{children}</main>
-      <footer className="max-w-7xl mx-auto px-4 py-8 text-center text-sm text-slate-500 border-t border-slate-200 bg-white/50">
+  <footer className="max-w-7xl mx-auto px-4 py-8 text-center text-sm text-slate-500 border-t border-slate-200">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <p>© {new Date().getFullYear()} Gabriel De La Rivera - BVI Universidad Ricardo Palma</p>
         </div>
@@ -1191,12 +1191,11 @@ function AppRoutes() {
   return (
     <AuthProvider>
       <HashRouter>
-        <div className="min-h-screen bg-white">
+        <div className="min-h-screen">
           <Routes>
             {/* Public Routes */}
             <Route path="/" element={<CareersPage />} />
             <Route path="/career/:careerKey" element={<ExamsPage />} />
-            
             {/* Admin Routes */}
             <Route path="/admin/login" element={<LoginPage />} />
             <Route 
@@ -1215,7 +1214,6 @@ function AppRoutes() {
                 </ProtectedRoute>
               } 
             />
-            
             {/* Fallback */}
             <Route path="*" element={<CareersPage />} />
           </Routes>
@@ -1227,15 +1225,17 @@ function AppRoutes() {
 
 export default function App() {
   return (
-    <NotificationProvider>
-      <ConfirmDialogProvider>
-        <ExamsProvider>
-          <EditModalProvider>
-            <AppRoutes />
-            <SpeedInsights />
-          </EditModalProvider>
-        </ExamsProvider>
-      </ConfirmDialogProvider>
-    </NotificationProvider>
+    <div style={{ minHeight: '100vh', background: "url('/fondo11.jpg') no-repeat center center fixed", backgroundSize: 'cover' }}>
+      <NotificationProvider>
+        <ConfirmDialogProvider>
+          <ExamsProvider>
+            <EditModalProvider>
+              <AppRoutes />
+              <SpeedInsights />
+            </EditModalProvider>
+          </ExamsProvider>
+        </ConfirmDialogProvider>
+      </NotificationProvider>
+    </div>
   );
 }

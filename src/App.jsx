@@ -61,20 +61,24 @@ function Page({ title, children, backTo }) {
                 FACULTAD DE INGENIERIA - URP 
               </span>
               <span
-                className="px-6 py-2 text-white text-xs sm:text-base font-bold shadow-md flex items-center justify-center"
+                className="px-3 sm:px-6 py-2 text-white text-xs sm:text-base font-bold shadow-md flex items-center justify-center whitespace-normal break-words text-center"
                 style={{
                   background: '#B91CB7',
                   fontFamily: 'League Spartan Extra Bold, League Spartan, Arial, sans-serif',
                   letterSpacing: '0.05em',
                   clipPath: 'polygon(7% 0, 100% 0, 93% 100%, 0 100%)',
                   border: 'none',
-                  minWidth: '220px',
+                  minWidth: '120px',
                   maxWidth: '100%',
-                  height: '40px',
+                  height: 'auto',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontSize: '1rem',
+                  fontSize: '0.9rem',
+                  lineHeight: 1.1,
+                  wordBreak: 'break-word',
+                  whiteSpace: 'normal',
+                  textAlign: 'center',
                 }}
               >
                 BIBLIOTECA VIRTUAL DE INGENIERIA

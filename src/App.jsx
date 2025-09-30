@@ -272,10 +272,9 @@ function CareersPage() {
       </div>
 
 
-      {/* Careers Grid */}
+      {/* Careers Grid: todas las carreras en un solo grid responsivo */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {/* Primer fila: Civil, Electrónica, Industrial */}
-        {CAREERS.slice(0, 3).map((career, index) => (
+        {CAREERS.map((career, index) => (
           <Card 
             key={career.key} 
             onClick={() => navigate(`/career/${career.key}`)}
@@ -294,6 +293,14 @@ function CareersPage() {
               ) : career.key === "industrial" ? (
                 <div className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg bg-white">
                   <img src="/ingindustrial.png" alt="Ingeniería Industrial" className="object-contain w-14 h-14" />
+                </div>
+              ) : career.key === "informatica" ? (
+                <div className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg bg-white">
+                  <img src="/inginformatica.png" alt="Ingeniería Informática" className="object-contain w-14 h-14" />
+                </div>
+              ) : career.key === "mecatronica" ? (
+                <div className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg bg-white">
+                  <img src="/ingmecatronica.png" alt="Ingeniería Mecatrónica" className="object-contain w-14 h-14" />
                 </div>
               ) : (
                 <div className={`w-16 h-16 bg-gradient-to-r ${career.color} rounded-2xl flex items-center justify-center shadow-lg`}>
@@ -317,49 +324,6 @@ function CareersPage() {
             </div>
           </Card>
         ))}
-        {/* Segunda fila: Informática y Mecatrónica, centradas */}
-        <div className="col-span-1 sm:col-span-2 lg:col-span-3 flex justify-center gap-6 mt-6">
-          {CAREERS.slice(3, 5).map((career, index) => (
-            <div className="w-full max-w-sm">
-              <Card 
-                key={career.key} 
-                onClick={() => navigate(`/career/${career.key}`)}
-                className="group-hover:scale-105"
-                style={{ animationDelay: `${(index + 3) * 100}ms` }}
-              >
-                <div className="flex items-start gap-4">
-                  {career.key === "informatica" ? (
-                    <div className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg bg-white">
-                      <img src="/inginformatica.png" alt="Ingeniería Informática" className="object-contain w-14 h-14" />
-                    </div>
-                  ) : career.key === "mecatronica" ? (
-                    <div className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg bg-white">
-                      <img src="/ingmecatronica.png" alt="Ingeniería Mecatrónica" className="object-contain w-14 h-14" />
-                    </div>
-                  ) : (
-                    <div className={`w-16 h-16 bg-gradient-to-r ${career.color} rounded-2xl flex items-center justify-center shadow-lg`}>
-                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                      </svg>
-                    </div>
-                  )}
-                  <div className="flex-1">
-                    <div className="text-lg font-bold text-slate-800 mb-2">{career.name}</div>
-                    <p className="text-sm text-slate-500 mb-3">
-                      Explora exámenes pasados organizados por ciclo y tipo de evaluación.
-                    </p>
-                    <div className="flex items-center gap-1 text-xs text-emerald-600">
-                      <span>Ver exámenes</span>
-                      <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-              </Card>
-            </div>
-          ))}
-        </div>
       </div>
     </Page>
   );

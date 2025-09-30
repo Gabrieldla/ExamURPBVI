@@ -10,11 +10,11 @@ import { ProtectedRoute } from "./ProtectedRoute";
 
 // ---- Mock Data ----
 const CAREERS = [
-  { key: "informatica", name: "Ingeniería Informática", color: "from-emerald-500 to-teal-600" },
   { key: "civil", name: "Ingeniería Civil", color: "from-emerald-600 to-teal-500" },
-  { key: "mecatronica", name: "Ingeniería Mecatrónica", color: "from-teal-500 to-emerald-600" },
-  { key: "industrial", name: "Ingeniería Industrial", color: "from-teal-600 to-emerald-500" },
   { key: "electricidad", name: "Ingeniería Electrónica", color: "from-emerald-500 to-teal-500" },
+  { key: "industrial", name: "Ingeniería Industrial", color: "from-teal-600 to-emerald-500" },
+  { key: "informatica", name: "Ingeniería Informática", color: "from-emerald-500 to-teal-600" },
+  { key: "mecatronica", name: "Ingeniería Mecatrónica", color: "from-teal-500 to-emerald-600" },
 ];
 
 
@@ -230,18 +230,11 @@ function CareersPage() {
         </p>
       </div>
 
-      {/* Stats */}
-      <div className="flex justify-center mb-12">
-        <StatsCard 
-          title="Total de Exámenes Disponibles" 
-          value={totalExams} 
-          subtitle="Listos para descargar"
-        />
-      </div>
 
       {/* Careers Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {CAREERS.map((career, index) => (
+        {/* Primer fila: Civil, Electrónica, Industrial */}
+        {CAREERS.slice(0, 3).map((career, index) => (
           <Card 
             key={career.key} 
             onClick={() => navigate(`/career/${career.key}`)}
@@ -259,21 +252,49 @@ function CareersPage() {
                 <p className="text-sm text-slate-500 mb-3">
                   Explora exámenes pasados organizados por ciclo y tipo de evaluación.
                 </p>
-                <div className="flex items-center justify-between">
-                  <span className="text-xs text-slate-400">
-                    {exams.filter(exam => exam.career === career.key).length} exámenes
-                  </span>
-                  <div className="flex items-center gap-1 text-xs text-emerald-600">
-                    <span>Ver exámenes</span>
-                    <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </div>
+                <div className="flex items-center gap-1 text-xs text-emerald-600">
+                  <span>Ver exámenes</span>
+                  <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
                 </div>
               </div>
             </div>
           </Card>
         ))}
+        {/* Segunda fila: Informática y Mecatrónica, centradas */}
+        <div className="col-span-1 sm:col-span-2 lg:col-span-3 flex justify-center gap-6 mt-6">
+          {CAREERS.slice(3, 5).map((career, index) => (
+            <div className="w-full max-w-sm">
+              <Card 
+                key={career.key} 
+                onClick={() => navigate(`/career/${career.key}`)}
+                className="group-hover:scale-105"
+                style={{ animationDelay: `${(index + 3) * 100}ms` }}
+              >
+                <div className="flex items-start gap-4">
+                  <div className={`w-16 h-16 bg-gradient-to-r ${career.color} rounded-2xl flex items-center justify-center shadow-lg`}>
+                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                    </svg>
+                  </div>
+                  <div className="flex-1">
+                    <div className="text-lg font-bold text-slate-800 mb-2">{career.name}</div>
+                    <p className="text-sm text-slate-500 mb-3">
+                      Explora exámenes pasados organizados por ciclo y tipo de evaluación.
+                    </p>
+                    <div className="flex items-center gap-1 text-xs text-emerald-600">
+                      <span>Ver exámenes</span>
+                      <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            </div>
+          ))}
+        </div>
       </div>
     </Page>
   );
@@ -567,25 +588,6 @@ function ExamsPage() {
         <span className="text-slate-800 font-medium">{career.name}</span>
       </div>
 
-      {/* Career Header */}
-      <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 mb-8">
-        <div className="flex items-center gap-4 mb-4">
-          <div className={`w-16 h-16 bg-gradient-to-r ${career.color} rounded-2xl flex items-center justify-center shadow-lg`}>
-            <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-            </svg>
-          </div>
-          <div>
-            <h1 className="text-2xl font-bold text-slate-800">{career.name}</h1>
-            <p className="text-slate-600">Explora exámenes pasados y prepárate para tus evaluaciones</p>
-          </div>
-        </div>
-        
-        <div className="text-center pt-4 border-t border-slate-100">
-          <p className="text-2xl font-bold text-emerald-600">{exams.length}</p>
-          <p className="text-sm text-slate-500">Exámenes disponibles</p>
-        </div>
-      </div>
 
       {/* Filters */}
       <FilterBar value={filters} onChange={setFilters} />

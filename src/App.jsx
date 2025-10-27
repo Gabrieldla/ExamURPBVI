@@ -3,9 +3,11 @@ import { HashRouter, Routes, Route, Link, useParams, useNavigate } from "react-r
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { AuthProvider } from "./AuthContext";
 import { ExamsProvider, useExams } from "./ExamsContext";
+import { StatsProvider, useStats } from "./StatsContext";
 import { useAuth } from "./AuthContext";
 import { LoginPage } from "./AdminComponents";
 import { UploadExamPage } from "./UploadExam";
+import { StatsDashboard } from "./StatsDashboard";
 import { ProtectedRoute } from "./ProtectedRoute";
 
 // ---- Mock Data ----
@@ -443,10 +445,13 @@ function ExamCard({ exam }) {
   const { addNotification } = useNotifications();
   const { openEditModal } = useEditModal();
   const { showConfirm } = useConfirmDialog();
+  const { recordExamView } = useStats();
   const [deleting, setDeleting] = useState(false);
 
   const handleDownload = () => {
     if (exam.exam_url) {
+      // Registrar la visualización
+      recordExamView(exam.id, exam.career);
       // Abrir enlace
       window.open(exam.exam_url, '_blank', 'noopener,noreferrer');
     } else {
@@ -1202,7 +1207,15 @@ function AppRoutes() {
               path="/admin" 
               element={
                 <ProtectedRoute>
-                  <UploadExamPage />
+                  <StatsDashboard />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/admin/stats" 
+              element={
+                <ProtectedRoute>
+                  <StatsDashboard />
                 </ProtectedRoute>
               } 
             />
@@ -1229,10 +1242,12 @@ export default function App() {
       <NotificationProvider>
         <ConfirmDialogProvider>
           <ExamsProvider>
-            <EditModalProvider>
-              <AppRoutes />
-              <SpeedInsights />
-            </EditModalProvider>
+            <StatsProvider>
+              <EditModalProvider>
+                <AppRoutes />
+                <SpeedInsights />
+              </EditModalProvider>
+            </StatsProvider>
           </ExamsProvider>
         </ConfirmDialogProvider>
       </NotificationProvider>

@@ -141,8 +141,20 @@ export function AdminLayout({ children, title }) {
               </div>
             </div>
             <button
-              onClick={() => navigate('/')}
+              onClick={() => navigate('/admin/stats')}
+              className="px-4 py-2 text-sm font-medium text-blue-600 hover:bg-blue-50 rounded-xl transition-colors"
+            >
+              Estadísticas
+            </button>
+            <button
+              onClick={() => navigate('/admin/upload')}
               className="px-4 py-2 text-sm font-medium text-emerald-600 hover:bg-emerald-50 rounded-xl transition-colors"
+            >
+              Subir Examen
+            </button>
+            <button
+              onClick={() => navigate('/')}
+              className="px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 rounded-xl transition-colors"
             >
               Ver Sitio
             </button>

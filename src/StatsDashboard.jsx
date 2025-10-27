@@ -136,40 +136,45 @@ export function StatsDashboard() {
                 </div>
               </div>
 
-              <div className="space-y-4">
-                {stats.examsByCareer.length === 0 ? (
-                  <p className="text-center text-slate-500 py-8">No hay datos disponibles</p>
-                ) : (
-                  stats.examsByCareer
-                    .sort((a, b) => b.count - a.count)
-                    .map((item) => {
-                      const percentage = stats.totalExams > 0 
-                        ? ((item.count / stats.totalExams) * 100).toFixed(1)
-                        : 0;
+              {stats.examsByCareer.length === 0 ? (
+                <p className="text-center text-slate-500 py-8">No hay datos disponibles</p>
+              ) : (
+                <div className="space-y-2">
+                  {/* Encontrar el valor máximo para escalar las barras */}
+                  {(() => {
+                    const maxCount = Math.max(...stats.examsByCareer.map(item => item.count));
+                    const sortedData = [...stats.examsByCareer].sort((a, b) => b.count - a.count);
+                    
+                    return sortedData.map((item) => {
+                      const barWidth = maxCount > 0 ? (item.count / maxCount) * 100 : 0;
                       const colorClass = getCareerColor(item.career);
-
+                      
                       return (
                         <div key={item.career} className="group">
-                          <div className="flex items-center justify-between mb-2">
-                            <span className="font-semibold text-slate-700">
+                          <div className="flex items-center gap-3">
+                            {/* Nombre de la carrera */}
+                            <div className="w-48 text-sm font-medium text-slate-700 truncate">
                               {getCareerName(item.career)}
-                            </span>
-                            <div className="flex items-center gap-3">
-                              <span className="text-sm text-slate-600">{percentage}%</span>
-                              <span className="text-lg font-bold text-slate-800">{item.count}</span>
                             </div>
-                          </div>
-                          <div className="w-full bg-slate-200 rounded-full h-3 overflow-hidden">
-                            <div 
-                              className={`h-full bg-gradient-to-r from-${colorClass}-500 to-${colorClass}-600 rounded-full transition-all duration-500 ease-out`}
-                              style={{ width: `${percentage}%` }}
-                            ></div>
+                            
+                            {/* Barra del gráfico */}
+                            <div className="flex-1 flex items-center gap-2">
+                              <div className="flex-1 bg-slate-100 rounded-full h-8 overflow-hidden">
+                                <div 
+                                  className={`h-full bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-full transition-all duration-700 ease-out flex items-center justify-end px-3`}
+                                  style={{ width: `${barWidth}%` }}
+                                >
+                                  <span className="text-white text-sm font-bold">{item.count}</span>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       );
-                    })
-                )}
-              </div>
+                    });
+                  })()}
+                </div>
+              )}
             </div>
 
             {/* Visualizaciones por Carrera */}
@@ -186,40 +191,45 @@ export function StatsDashboard() {
                 </div>
               </div>
 
-              <div className="space-y-4">
-                {stats.clicksByCareer.length === 0 ? (
-                  <p className="text-center text-slate-500 py-8">No hay datos de visualizaciones aún</p>
-                ) : (
-                  stats.clicksByCareer
-                    .sort((a, b) => b.count - a.count)
-                    .map((item) => {
-                      const percentage = stats.totalClicks > 0 
-                        ? ((item.count / stats.totalClicks) * 100).toFixed(1)
-                        : 0;
+              {stats.clicksByCareer.length === 0 ? (
+                <p className="text-center text-slate-500 py-8">No hay datos de visualizaciones aún</p>
+              ) : (
+                <div className="space-y-2">
+                  {/* Encontrar el valor máximo para escalar las barras */}
+                  {(() => {
+                    const maxCount = Math.max(...stats.clicksByCareer.map(item => item.count));
+                    const sortedData = [...stats.clicksByCareer].sort((a, b) => b.count - a.count);
+                    
+                    return sortedData.map((item) => {
+                      const barWidth = maxCount > 0 ? (item.count / maxCount) * 100 : 0;
                       const colorClass = getCareerColor(item.career);
-
+                      
                       return (
                         <div key={item.career} className="group">
-                          <div className="flex items-center justify-between mb-2">
-                            <span className="font-semibold text-slate-700">
+                          <div className="flex items-center gap-3">
+                            {/* Nombre de la carrera */}
+                            <div className="w-48 text-sm font-medium text-slate-700 truncate">
                               {getCareerName(item.career)}
-                            </span>
-                            <div className="flex items-center gap-3">
-                              <span className="text-sm text-slate-600">{percentage}%</span>
-                              <span className="text-lg font-bold text-slate-800">{item.count}</span>
                             </div>
-                          </div>
-                          <div className="w-full bg-slate-200 rounded-full h-3 overflow-hidden">
-                            <div 
-                              className={`h-full bg-gradient-to-r from-${colorClass}-400 to-${colorClass}-500 rounded-full transition-all duration-500 ease-out`}
-                              style={{ width: `${percentage}%` }}
-                            ></div>
+                            
+                            {/* Barra del gráfico */}
+                            <div className="flex-1 flex items-center gap-2">
+                              <div className="flex-1 bg-slate-100 rounded-full h-8 overflow-hidden">
+                                <div 
+                                  className={`h-full bg-gradient-to-r from-blue-500 to-blue-600 rounded-full transition-all duration-700 ease-out flex items-center justify-end px-3`}
+                                  style={{ width: `${barWidth}%` }}
+                                >
+                                  <span className="text-white text-sm font-bold">{item.count}</span>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       );
-                    })
-                )}
-              </div>
+                    });
+                  })()}
+                </div>
+              )}
             </div>
 
             {/* Ratio de Visualización */}

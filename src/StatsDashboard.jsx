@@ -4,11 +4,11 @@ import { useAuth } from './AuthContext';
 import { useStats } from './StatsContext';
 
 const CAREERS_MAP = {
-  civil: { name: "Ingeniería Civil", color: "emerald" },
-  electricidad: { name: "Ingeniería Electrónica", color: "blue" },
-  industrial: { name: "Ingeniería Industrial", color: "amber" },
-  informatica: { name: "Ingeniería Informática", color: "violet" },
-  mecatronica: { name: "Ingeniería Mecatrónica", color: "teal" },
+  civil: { name: "Ingeniería Civil", color: "#10b981" }, // emerald-500
+  electricidad: { name: "Ingeniería Electrónica", color: "#3b82f6" }, // blue-500
+  industrial: { name: "Ingeniería Industrial", color: "#f59e0b" }, // amber-500
+  informatica: { name: "Ingeniería Informática", color: "#8b5cf6" }, // violet-500
+  mecatronica: { name: "Ingeniería Mecatrónica", color: "#14b8a6" }, // teal-500
 };
 
 export function StatsDashboard() {
@@ -261,7 +261,7 @@ export function StatsDashboard() {
                       <p className="text-sm font-medium text-slate-600 mb-2">
                         {getCareerName(examData.career)}
                       </p>
-                      <p className={`text-3xl font-bold text-${colorClass}-600 mb-1`}>
+                      <p className="text-3xl font-bold text-slate-800 mb-1">
                         {ratio}
                       </p>
                       <p className="text-xs text-slate-500">

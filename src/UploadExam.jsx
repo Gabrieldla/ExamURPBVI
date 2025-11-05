@@ -25,6 +25,7 @@ export function UploadExamPage() {
     { key: "mecatronica", name: "Ingeniería Mecatrónica" },
     { key: "industrial", name: "Ingeniería Industrial" },
     { key: "electricidad", name: "Ingeniería Electrónica" },
+    { key: "generales", name: "Cursos Generales" },
   ];
 
   const cycles = ["1","2","3","4","5","6","7","8","9","10"];
@@ -256,7 +257,7 @@ export function UploadExamPage() {
                     name="year"
                     value={formData.year}
                     onChange={handleInputChange}
-                    min="2020"
+                    min="1900"
                     max={new Date().getFullYear() + 1}
                     className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
                     required

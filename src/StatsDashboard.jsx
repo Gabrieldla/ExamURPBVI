@@ -4,6 +4,7 @@ import { useAuth } from './AuthContext';
 import { useStats } from './StatsContext';
 
 const CAREERS_MAP = {
+  generales: { name: "Cursos Generales", color: "#a855f7" }, // purple-500
   civil: { name: "Ingeniería Civil", color: "#10b981" }, // emerald-500
   electricidad: { name: "Ingeniería Electrónica", color: "#3b82f6" }, // blue-500
   industrial: { name: "Ingeniería Industrial", color: "#f59e0b" }, // amber-500

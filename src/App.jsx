@@ -17,6 +17,7 @@ const CAREERS = [
   { key: "industrial", name: "Ingeniería Industrial", color: "from-teal-600 to-emerald-500" },
   { key: "informatica", name: "Ingeniería Informática", color: "from-emerald-500 to-teal-600" },
   { key: "mecatronica", name: "Ingeniería Mecatrónica", color: "from-teal-500 to-emerald-600" },
+  { key: "generales", name: "Cursos Generales", color: "from-purple-600 to-pink-500" },
 ];
 
 
@@ -288,7 +289,11 @@ function CareersPage() {
             style={{ animationDelay: `${index * 100}ms` }}
           >
             <div className="flex items-start gap-4">
-              {career.key === "civil" ? (
+              {career.key === "generales" ? (
+                <div className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg bg-white">
+                  <img src="/cursosgenerales.png" alt="Cursos Generales" className="object-contain w-14 h-14" />
+                </div>
+              ) : career.key === "civil" ? (
                 <div className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg bg-white">
                   <img src="/ingcivil.png" alt="Ingeniería Civil" className="object-contain w-14 h-14" />
                 </div>
@@ -318,7 +323,10 @@ function CareersPage() {
               <div className="flex-1">
                 <div className="text-lg font-bold text-slate-800 mb-2">{career.name}</div>
                 <p className="text-sm text-slate-500 mb-3">
-                  Explora exámenes pasados organizados por ciclo y tipo de evaluación.
+                  {career.key === "generales" 
+                    ? "Cursos compartidos por todas las carreras de ingeniería (Matemática, Física, etc.)"
+                    : "Explora exámenes pasados organizados por ciclo y tipo de evaluación."
+                  }
                 </p>
                 <div className="flex items-center gap-1 text-xs text-emerald-600">
                   <span>Ver exámenes</span>
